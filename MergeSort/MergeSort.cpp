@@ -43,6 +43,7 @@ void merge_sort(vector<int>& a, int low, int hi)
 	int mid = low + (hi - low) / 2;
 	merge_sort(a, low, mid);
 	merge_sort(a, mid + 1, hi);
+	if (a[mid + 1] >= a[mid])return;//进行优化处理。。
 	merge(a, low, hi, mid);
 }
 //判断是否排序,从小到大进行排序
@@ -61,7 +62,7 @@ int main()
 	static default_random_engine e(time(0));
 	static uniform_int_distribution<int> u(1, 1000000000);
 	vector<int>vec;
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < 5000000; i++)
 	{
 		vec.push_back(u(e));
 	}
